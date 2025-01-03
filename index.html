@@ -245,45 +245,25 @@
 
 <section class="section">
   <div class="container is-max-desktop">
-
-    <!-- Dataset. -->
+    <!-- Illustration. -->
     <div class="columns is-centered">
       <div class="column is-full-width">
-        <h2 class="title is-3">Dataset</h2>
-
+        <h2 class="title is-3">Motion Manifold Primitives (MMP)</h2>
         <!-- Extended Deformable Superquadrics. -->
-        <h3 class="title is-4">Extended Deformable Superquadrics</h3>
+        <h3 class="title is-4">Manifold-Based Trajectory Learning</h3>
         <div class="content has-text-justified">
           <p>
-            <b>Superquadrics</b>, parametrized by only a few parameters, can represent a relatively wide range of geometric shapes. 
-            We employ two kinds of superquadrics: <b>superellipsoids</b>, which have been used for object manipulation, and 
-            <b>superparaboloids</b>, which are newly introduced. Superellipsoids and superparaboloids are implicit surfaces 
-            with the following implicit functions with size parameters \((a_1, a_2, a_3) \in \mathbb{R}_+^3\) and shape parameters 
-            \((e_1, e_2) \in \mathbb{R}_+^2\): for \(\textbf{x} = (x, y, z)\), 
-            $$
-            \begin{equation*}
-              \overbrace{f_{se}(\textbf{x})=\left(\left|\frac{x}{a_1}\right|^{\frac{2}{e_2}}
-              + \left|\frac{y}{a_2}\right|^{\frac{2}{e_2}}\right)^{\frac{e_2}{e_1}}
-              + \left|\frac{z}{a_3}\right|^{\frac{2}{e_1}} = 1 }^{\text{Superellipsoid}},
-              \:\:\:\:\:\:
-              \overbrace{f_{sp}(\textbf{x})=
-              \left(\left|\frac{x}{a_1}\right|^{\frac{2}{e_2}}
-              + \left|\frac{y}{a_2}\right|^{\frac{2}{e_2}}\right)^{\frac{e_2}{e_1}}
-              - \left(\frac{z}{a_3}\right) = 1}^{\text{Superparaboloid}}
-              \label{eq:sq}
-              \end{equation*}
-            $$
-            <b>Deformable superquadrics</b> extend superquadrics by incorporating global deformations, including tapering, bending,
-            and shearing transformations. By adjusting the parameters, various surfaces can be represented, as shown below. 
+            There exist more than one trajectory that can perform a given task, specified by <b>a task parameter \(\tau\).</b>
+            Assuming that the trajectories form a manifold, our goal is to learn the manifold of trajectories for each task, 
+            denoted by a <b>Motion Manifold \({\cal M}_\tau\).</b>
           </p>
         </div>
         <div class="columns">
           <div class="column has-text-centered">
             <img src="./assets/images/edsq.png"
-                 alt="deformable superquadrics"/>
+                alt="deformable superquadrics"/>
           </div>
         </div>
-
         <!-- TablewareNet. -->
         <h3 class="title is-4">TablewareNet: Dataset for Cluttered Transparent Tableware</h3>
         <div class="content has-text-justified">
@@ -302,29 +282,6 @@
                     type="video/mp4">
           </video>
         </div>
-      </div>
-    </div>
-
-    <!-- TL;DR. -->
-    <div class="columns is-centered interpolation-panel">
-      <div class="column is-full-width">
-        <h2 class="title is-4 has-text-centered">Train Your Own Models with TablewareNet!</h2>
-        <div class="content">
-          For each scene in TablewareNet, we provide mask images, depth images, and RGB images captured from seven different 
-          camera poses using the synthetic camera parameters of the RealSense D435. Additionally, each scene includes 3D geometric
-          information such as object poses, tableware parameters, class labels, bounding boxes, meshes, and TSDF values. Currently, 
-          the dataset features only one version: one with transparent objects on a table (a version with objects on a shelf can be 
-          generated using the data generation scripts provided in our GitHub). Click the button below to download and use TablewareNet!
-        </div>
-        <div class="has-text-centered">
-          <a href="https://drive.google.com/drive/folders/1d9K7xZU8Z4RnEMgOCBAw3ilTztowcJm7?usp=drive_link">
-            <button class="button is-primary">Download TablewareNet</button>
-          </a>
-        </div>
-        <!-- <div class="content">
-          Additionally, 
-        </div> -->
-
       </div>
     </div>
   </div>
