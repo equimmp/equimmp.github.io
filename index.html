@@ -223,6 +223,32 @@
       </div>
     </div>
 
+
+    <!-- Teaser Video. -->
+    <div class="columns is-centered">
+      <!-- Latent Space Modulation. -->
+      <div class="column has-text-left">
+        <div class="content">
+          <h2 class="title is-3">Latent Space Modulation</h2>
+          <!-- <video id="sd" autoplay controls muted loop playsinline height="100%"> -->
+            <img src="./assets/images/manifold.gif"
+            alt="modulation"/>
+        </div>
+      </div>
+
+      <!-- Trajectory Sampling. -->
+      <div class="column has-text-left">
+        <h2 class="title is-3">Trajectory Sampling</h2>
+        <div class="columns is-centered">
+          <div class="column content">
+            <!-- <video id="tr" autoplay controls muted loop playsinline height="100%"> -->
+            <img src="./assets/images/sample.gif"
+            alt="sampling"/>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- Paper video. -->
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
@@ -248,154 +274,81 @@
     <!-- Illustration. -->
     <div class="columns is-centered">
       <div class="column is-full-width">
-        <h2 class="title is-3">Motion Manifold Primitives (MMP)</h2>
+        <!-- <h2 class="title is-3">Motion Manifold Primitives (MMP)</h2> -->
         <!-- Extended Deformable Superquadrics. -->
-        <h3 class="title is-4">Manifold-Based Trajectory Learning</h3>
+        <h3 class="title is-4">Motion Manifold Primitives (MMP)</h3>
         <div class="content has-text-justified">
           <p>
-            There exist more than one trajectory that can perform a given task, specified by <b>a task parameter \(\tau\).</b>
-            Assuming that the trajectories form a manifold, our goal is to learn the manifold of trajectories for each task, 
-            denoted by a <b>Motion Manifold \({\cal M}_\tau\).</b>
+              Under the assumption that all motion manifolds can be smoothly defromed into each other, 
+              our model learns a shared latent space of all task parameters.
+              Then, our model maps a latent value \(z\) and a task parameter \(\tau\) into a reconstructed trajectory \(\hat{x}\).
           </p>
         </div>
         <div class="columns">
           <div class="column has-text-centered">
-            <img src="./assets/images/edsq.png"
-                alt="deformable superquadrics"/>
+            <img src="./assets/images/MMP.png"
+                alt="MMP"/>
           </div>
         </div>
-        <!-- TablewareNet. -->
-        <h3 class="title is-4">TablewareNet: Dataset for Cluttered Transparent Tableware</h3>
+        <h3 class="title is-4">Inherent symmetry within tasks</h3>
         <div class="content has-text-justified">
           <p>
-              We combine deformable superquadrics to define templates representing seven types of tableware: <b>wine glasses, 
-              bottles, beer bottles, bowls, dishes, handleless cups</b>, and <b>mugs</b>. By adjusting parameters, we can generate 
-              diverse 3D tableware meshes. Spawning these meshes in a user-defined environment (e.g., table or shelf) within 
-              a physics simulator allows us to generate cluttered scenes. Using Blender, a photorealistic renderer, with transparent 
-              textures, we obtain RGB images of the scenes from arbitrary camera poses.
+              There exist inherent symmetries within robot tasks, such as rotational symmetry or translational symmetry.
           </p>
         </div>
+        <div class="columns">
+          <div class="column has-text-centered">
+            <img src="./assets/images/symmetry.png"
+                alt="symmetry"/>
+          </div>
+        </div>
+        <h3 class="title is-4">Equivariant Motion Manifold Primitives (EMMP)</h3>
+        <div class="content has-text-justified">
+          <p>
+              We propose Equivariant Motion Manifold Primitives (EMMP) 
+              that are equivariant with respect to the inherent symmetries within tasks.
+          </p>
+        </div>
+        <div class="columns">
+          <div class="column has-text-centered">
+            <img src="./assets/images/EMMP.png"
+                alt="EMMP"/>
+          </div>
+        </div>
+        <h3 class="title is-4">Experiment Results</h3>
+        <h3 class="title is-4"> </h3>
+        <h3 class="title is-4">1. Navigation in 2D</h3>
+        <div class="columns">
+          <div class="column has-text-centered">
+            <img src="./assets/images/navigation.png"
+                alt="navigation result"/>
+          </div>
+        </div>
+        <h3 class="title is-4">2. Water Pouring Motion in SE(3)</h3>
         <div class="content has-text-centered">
           <video id="tablewarenet" autoplay controls muted loop playsinline height="100%">
           <!-- <video id="tablewarenet" controls muted preload playsinline width="75%"> -->
-            <source src="./assets/videos/tablewarenet.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="section">
-  <div class="container is-max-desktop">
-
-    <!-- Recognition Model. -->
-    <div class="columns is-centered">
-      <div class="column is-full-width">
-        <h2 class="title is-3">Recognition Model</h2>
-
-        <!-- T2SQNet. -->
-        <h3 class="title is-4">T<sup>2</sup>SQNet: Transparent Tableware SuperQuadric Network</h3>
-        <div class="content has-text-justified">
-          <p>
-            Overall, our method consists of four steps: (1) mask prediction in 2D images, (2) prediction of 3D bounding boxes, 
-            (3) computation of a <b>smoothed visual hull</b> through voxel carving, and (4) prediction of tableware parameters 
-            (i.e., a set of superquadric parameters). We apply these modules sequentially during inference, which can lead to 
-            the accumulation of prediction errors. To address this, we develop techniques to train each module accurately and 
-            robustly against noise and sim-to-real gaps.
-          </p>
-        </div>
-        <div class="content has-text-centered">
-          <video id="tablewarenet" autoplay controls muted loop playsinline height="100%">
-          <!-- <video id="tablewarenet" controls muted preload playsinline width="75%"> -->
-            <source src="./assets/videos/t2sqnet.mp4"
+            <source src="./assets/videos/pouring_result.mp4"
                     type="video/mp4">
           </video>
         </div>
 
-        <!-- Recognition Results. -->
-        <h3 class="title is-4">Recognition Results</h3>
-        <div class="content has-text-justified">
-          <p>
-            The figure below shows the ground-truth shapes of the transparent TRansPose objects alongside the 
-            inferred implicit surfaces from T<sup>2</sup>SQNet. Although capturing surface details, such as the 
-            curvature of a water bottle, is challenging due to the nature of superquadric surfaces, we can confirm
-             that T<sup>2</sup>SQNet infers the overall shapes to a considerable extent.
-          </p>
-        </div>
-        <div class="columns">
-          <div class="column has-text-centered">
-            <img src="./assets/images/recognition.png"
-                 alt="recognition results"/>
-          </div>
-        </div>
-   
       </div>
     </div>
   </div>
 </section>
-
-<section class="section">
-  <div class="container is-max-desktop">
-
-    <!-- Geometry-aware Object Manipulation. -->
-    <div class="columns is-centered">
-      <div class="column is-full-width">
-        <h2 class="title is-3">Geometry-Aware Object Manipulation</h2>
-
-        <!-- Object Manipulation with T2SQNet. -->
-        <h3 class="title is-4">Object Manipulation with T<sup>2</sup>SQNet</h3>
-        <div class="content has-text-justified">
-          <p>
-            T<sup>2</sup>SQNet offers several practical advantages for downstream object manipulation tasks. 
-            For example, it allows for the easy design of an effective 6-DoF grasp sampler based on deformable 
-            superquadric representations, enables rapid collision checks through implicit function representations 
-            of deformable superquadric surfaces, and facilitates target-driven manipulation with instance-wise 
-            object recognition.
-          </p>
-        </div>
-        <div class="columns">
-          <div class="column has-text-centered">
-            <img src="./assets/images/manipulation.png"
-                 alt="manipulation"/>
-          </div>
-        </div>
-
-
-        <!-- Object Manipulation Results. -->
-        <h3 class="title is-4">Object Manipulation Results</h3>
-        <div class="content has-text-justified">
-          <p>
-            We demonstrate the effectiveness of our model, T<sup>2</sup>SQNet, on two object manipulation tasks: (i) 
-            <b>sequential decluttering</b>, which involves sequential grasping in a cluttered environment, and (ii) 
-            <b>target retrieval</b>, which involves object rearrangement planning to retrieve an initially non-graspable 
-            target object. The target object is indicated by a specific tableware class name (e.g., wineglass). Real-world 
-            manipulation videos can be found below.
-          </p>
-        </div>
-
-        <div class="publication-video">
-          <iframe src="https://www.youtube.com/embed/6m5ZOrbSxxI?rel=0&amp;showinfo=0"
-                  frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-        </div>
-
-      </div>
-    </div>
-  </div>
-</section>
-
 
 <!-- Citation. -->
 <section class="section" id="BibTeX">
   <div class="container is-max-desktop content">
     <h2 class="title is-3">Citation</h2>
     <pre><code>
-@inproceedings{kim2024t2sqnet,
-  title={T$^2$SQNet: A Recognition Model for Manipulating Partially Observed Transparent Tableware Objects},
-  author={Kim, Young Hun and Kim, Seungyeon and Lee, Yonghyeon and Park, Frank C},
-  booktitle={8th Annual Conference on Robot Learning}
-}
+      @inproceedings{lee2023equivariant,
+        title={Equivariant motion manifold primitives},
+        author={Lee, Byeongho and Lee, Yonghyeon and Kim, Seungyeon and Son, MinJun and Park, Frank C},
+        booktitle={7th Annual Conference on Robot Learning},
+        year={2023}
+      }
     </code></pre>
   </div>
 </section>
